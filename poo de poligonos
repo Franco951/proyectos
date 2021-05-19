@@ -1,73 +1,30 @@
 package areapoo;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class principal {
 
-    static Scanner dato = new Scanner(System.in);
-    static ArrayList<poligono> poligono = new ArrayList<poligono>();
+public abstract class poligono {
+  protected int Numerodelados ;
 
-    public static void main(String[] args) {
-
-        llenarpoligono();
-        mostrardatos();
-
+    public poligono(int Numerodelados) {
+        this.Numerodelados = Numerodelados;
     }
 
-    public static void llenarpoligono() {
-        int opcion;
-        char respuesta;
-        do {
-            do {
-                System.out.println("Digite que poligono quiere llenar ");
-                System.out.println("1.Triangulo");
-                System.out.println("2.Rectangulo");
-                opcion = dato.nextInt();
-            } while (opcion < 1 || opcion > 2);
-            switch (opcion) {
-                case 1:
-                    llenartriangulo();
-                    break;
-                case 2:
-                    llenarrectangulo();
-                    break;
-
-            }
-            System.out.println("Desea ingresar digite s/n ");
-            respuesta = dato.next().charAt(0);
-
-        } while (respuesta == 's' || respuesta == 'S');
+    
+  public int getNumerodelados() {
+        return Numerodelados;
     }
 
-    public static void llenartriangulo() {
-        double lado1, lado2, lado3;
-        System.out.println("Digite el primer lado ");
-        lado1 = dato.nextDouble();
-        System.out.println("Digite el segundo lado ");
-        lado2 = dato.nextDouble();
-        System.out.println("Digite el tercer lado ");
-        lado3 = dato.nextDouble();
-        triangulo triangulo = new triangulo(lado1, lado2, lado3);
-        poligono.add(triangulo);
+   
+  
+  @Override
+    public String toString() {
+        return  "Numerodelados=" + Numerodelados ;
     }
-
-    public static void llenarrectangulo() {
-        double lado1, lado2;
-        System.out.println("Digite el primer lado ");
-        lado1 = dato.nextDouble();
-        System.out.println("Digite el segundo lado ");
-        lado2 = dato.nextDouble();
-
-        rectangulo rectangulo = new rectangulo(lado1, lado2);
-        poligono.add(rectangulo);
-    }
-
-    public static void mostrardatos() {
-        for (poligono poli : poligono) {
-            System.out.println(poli.toString());
-            System.out.println("El area es " + poli.area());
-            System.out.println("");
-        }
-    }
+ public abstract double area();
+      
+  
+    
+    
+    
 }
+
