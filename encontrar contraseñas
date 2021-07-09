@@ -1,0 +1,38 @@
+
+package contraseña;
+
+import java.util.Random;
+
+public class Contraseña {
+
+   
+    public static void main(String[] args) {
+    String contraseña="pmo";
+   
+    String guardado="";
+    do{
+      guardado=  contraseña();
+        System.out.println(guardado);
+    }while(!contraseña.equals(guardado));    
+        
+        System.out.println("Su contraseña es: "+ guardado);   
+        
+    }
+    
+   public static String contraseña(){
+        Random ran = new Random();
+            String b = "@|¿?/AZSCDVFBGNMHJKLÑQWERTYUIOPazsxdcfvgbhnjmklñpoiuytrewq1234567890";
+            String a = generateString(ran, b, 3);
+          return a;
+   }
+    public static String generateString(Random rng, String characters, int length) {
+        char[] text = new char[length];
+
+        for (int i = 0; i < length; i++) {
+
+            text[i] = characters.charAt(rng.nextInt(characters.length()));
+
+        }
+        return new String(text);
+    }
+}
